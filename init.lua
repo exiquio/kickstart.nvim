@@ -661,6 +661,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         javascript = { 'prettierd' },
         python = { 'black' },
+        ruby = { 'rubycop' },
         rust = { 'rustfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
