@@ -569,11 +569,6 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        --ruby_lsp = {},
-        --clangd = {},
-        -- gopls = {},
-        --pyright = {},
-        --rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -582,21 +577,31 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
-
-        lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
+        -- Bash
+        --bsl_ls = {},
+        -- C
+        --clangd = {},
+        -- Lua
+        --lua_ls = {
+          --cmd = {...},
+          --filetypes = { ...},
+          --capabilities = {},
+          --settings = {
+            --Lua = {
+              --completion = {
+                --callSnippet = 'Replace',
+              --},
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
+            --},
+          --},
+        --},
+        -- Python
+        --pyright = {},
+        -- Ruby
+        --sorbet = {},
+        -- Zig
+        zls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -657,12 +662,13 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
+        bash = { 'shellharden' },
         c = { 'uncrustify' },
         lua = { 'stylua' },
         javascript = { 'prettierd' },
         python = { 'black' },
         ruby = { 'rubycop' },
-        rust = { 'rustfmt' },
+        zig = { 'zigfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -867,11 +873,10 @@ require('lazy').setup({
         'markdown',
         'markdown_inline',
         'python',
-        'query',
         'ruby',
-        'rust',
         'vim',
         'vimdoc',
+        'zig',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
